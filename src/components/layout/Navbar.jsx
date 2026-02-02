@@ -5,7 +5,7 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="navbar-logo">
-                MyApp
+                SmartShop
             </div>
 
             <ul className="navbar-links">
@@ -17,6 +17,11 @@ const Navbar = () => {
                 <li>
                     <NavLink to="/clients" className={({ isActive }) => isActive ? 'active' : ''}>
                         Clients
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/commandes" className={({ isActive }) => isActive ? 'active' : ''}>
+                        Commandes
                     </NavLink>
                 </li>
                 <li>

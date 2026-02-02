@@ -1,0 +1,17 @@
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.status-PENDING { background: #fef3c7; color: #d97706; }   /* Jaune */
+.status-CONFIRMED { background: #d1fae5; color: #059669; } /* Vert */
+.status-CANCELED { background: #f3f4f6; color: #4b5563; }  /* Gris */
+.status-REJECTED { background: #fee2e2; color: #dc2626; }  /* Rouge */
+
+.price {
+    font-weight: 700;
+    color: #111827;
+}

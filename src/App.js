@@ -12,6 +12,7 @@ import {
 
 import MainLayout from './components/layout/MainLayout';
 import PromoCodePage from "./pages/promo/PromoCodePage";
+import CommandePage from "./pages/commande/CommandePage";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ function App() {
                         <Route path="/clients" element={<ClientsPage />} />
                         <Route path="/produits" element={<ProduitsPage />} />
                         <Route path="/promo-codes" element={<PromoCodePage />} />
+                        <Route path="/commandes" element={<CommandePage />} />
                         <Route path="/" element={<Navigate to="/dashboard" replace />} />
                     </Route>
 
