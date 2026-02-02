@@ -11,6 +11,7 @@ import {
 } from '@tanstack/react-query';
 
 import MainLayout from './components/layout/MainLayout';
+import PromoCodePage from "./pages/promo/PromoCodePage";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ function App() {
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/clients" element={<ClientsPage />} />
                         <Route path="/produits" element={<ProduitsPage />} />
+                        <Route path="/promo-codes" element={<PromoCodePage />} />
                         <Route path="/" element={<Navigate to="/dashboard" replace />} />
                     </Route>
 

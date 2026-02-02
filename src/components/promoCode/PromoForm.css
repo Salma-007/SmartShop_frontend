@@ -1,0 +1,19 @@
+.promo-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-title {
+    color: #1f2937;
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 6px;
+}
