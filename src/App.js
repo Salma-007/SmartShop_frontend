@@ -13,6 +13,7 @@ import {
 import MainLayout from './components/layout/MainLayout';
 import PromoCodePage from "./pages/promo/PromoCodePage";
 import CommandePage from "./pages/commande/CommandePage";
+import PaiementPage from "./pages/paiement/PaiementPage";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ function App() {
                         <Route path="/produits" element={<ProduitsPage />} />
                         <Route path="/promo-codes" element={<PromoCodePage />} />
                         <Route path="/commandes" element={<CommandePage />} />
+                        <Route path="/paiements" element={<PaiementPage />} />
                         <Route path="/" element={<Navigate to="/dashboard" replace />} />
                     </Route>
 

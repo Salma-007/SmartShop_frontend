@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 import { commandeService } from '../../services/commandeService';
 import './CommandeList.css';
 
 const CommandeList = () => {
     const [page, setPage] = useState(0);
     const queryClient = useQueryClient();
+    const navigate = useNavigate();
 
     const { data, isLoading } = useQuery({
         queryKey: ['commandes', page],
@@ -62,6 +64,13 @@ const CommandeList = () => {
                                                 onClick={() => cancelMutation.mutate(cmd.id)}>✖️</button>
                                     </>
                                 )}
+                                <button
+                                    className="btn-icon"
+                                    title="Effectuer un paiement"
+                                    onClick={() => navigate('/paiements', { state: { commande: cmd } })}
+                                >
+                                    💳
+                                </button>
                                 <button className="btn-icon btn-view">👁️</button>
                             </div>
                         </td>

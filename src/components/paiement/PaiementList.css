@@ -1,0 +1,113 @@
+.paiement-history {
+    margin-top: 10px;
+}
+
+.paiement-history h4 {
+    font-size: 16px;
+    color: #374151;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mini-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.mini-table th {
+    background-color: #f9fafb;
+    padding: 12px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.mini-table td {
+    padding: 12px;
+    font-size: 13px;
+    color: #4b5563;
+    border-bottom: 1px solid #f3f4f6;
+    vertical-align: middle;
+}
+
+.mini-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Badges de Statut spécifiques aux paiements */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.status-ENCAISSÉ {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-EN_ATTENTE {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.status-REJETÉ {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* Boutons d'action rapides (Check & X) */
+.action-btns-mini {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-check, .btn-x {
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 12px;
+}
+
+.btn-check {
+    background-color: #ecfdf5;
+    color: #10b981;
+    border: 1px solid #a7f3d0;
+}
+
+.btn-check:hover {
+    background-color: #10b981;
+    color: white;
+}
+
+.btn-x {
+    background-color: #fef2f2;
+    color: #ef4444;
+    border: 1px solid #fecaca;
+}
+
+.btn-x:hover {
+    background-color: #ef4444;
+    color: white;
+}
+
+/* Animation au survol des lignes */
+.mini-table tbody tr:hover {
+    background-color: #f9fafb;
+}

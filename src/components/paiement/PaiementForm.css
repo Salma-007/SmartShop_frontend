@@ -1,0 +1,42 @@
+.payment-mode {
+    border-left: 5px solid #10b981;
+    background: #f0fdf4;
+}
+
+.remaining-balance {
+    font-size: 1.1rem;
+    color: #065f46;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #d1fae5;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.paiement-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+.btn-pay {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+}
+
+.mini-table {
+    width: 100%;
+    font-size: 0.9rem;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.mini-table th { padding: 8px; color: #6b7280; border-bottom: 2px solid #e5e7eb; text-align: left;}
+.mini-table td { padding: 10px 8px; border-bottom: 1px solid #f3f4f6; }
+
+.status-ENCAISSÉ { background: #d1fae5; color: #065f46; }
+.status-EN_ATTENTE { background: #fef3c7; color: #92400e; }
+.status-REJETÉ { background: #fee2e2; color: #991b1b; }
