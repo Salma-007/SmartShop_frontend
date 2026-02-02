@@ -1,77 +1,53 @@
+import React, { useEffect, useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { clientService } from '../../services/clientService';
 import './AddClientForm.css';
 
-const AddClientForm = () => {
+const AddClientForm = ({ clientToEdit, onCancel }) => {
     const queryClient = useQueryClient();
+    const isEditMode = !!clientToEdit;
 
+    // Mutation unique pour Create OU Update
     const mutation = useMutation({
-        mutationFn: (newClient) => clientService.create(newClient),
+        mutationFn: (data) => {
+            return isEditMode
+                ? clientService.update(clientToEdit.id, data)
+                : clientService.create(data);
+        },
         onSuccess: () => {
             queryClient.invalidateQueries(['clients']);
-            alert('Client ajouté avec succès !');
-        },
-        onError: (error) => {
-            const message = error.response?.data?.message || "Erreur serveur";
-            alert(message);
+            onCancel();
         }
     });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData);
-        mutation.mutate(data);
-    };
-
     return (
         <div className="form-container">
-            <form onSubmit={handleSubmit} className="client-form">
-
-                <div className="input-group">
-                    <input
-                        className="input-field"
-                        name="username"
-                        placeholder="Username"
-                        required
-                    />
-                </div>
-
-                <div className="input-group">
-                    <input
-                        className="input-field"
-                        name="password"
-                        type="password"
-                        placeholder="Mot de passe"
-                        required
-                    />
-                </div>
-
-                <div className="input-group">
-                    <input
-                        className="input-field"
-                        name="email"
-                        type="email"
-                        placeholder="Email"
-                        required
-                    />
-                </div>
-
-                <div className="input-group">
-                    <input
-                        className="input-field"
-                        name="name"
-                        placeholder="Nom complet"
-                        required
-                    />
-                </div>
+            <h3>{isEditMode ? "Modifier le client" : "Nouveau Client"}</h3>
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                const data = Object.fromEntries(new FormData(e.target));
+                mutation.mutate(data);
+                if (isEditMode) {
+                    data.password = data.password || "";
+                }
+            }} className="client-form">
+                <input className="input-field" name="name" defaultValue={clientToEdit?.name} placeholder="Nom" required />
+                <input className="input-field" name="email" defaultValue={clientToEdit?.email} placeholder="Email" required />
+                <input className="input-field" name="username" defaultValue={clientToEdit?.username} placeholder="Username" required />
+                <input
+                    className="input-field"
+                    name="password"
+                    type="password"
+                    placeholder={isEditMode ? "Nouveau mot de passe (laisser vide pour garder l'ancien)" : "Password"}
+                    required={!isEditMode}
+                />
 
                 <div className="form-actions">
-                    <button type="submit" disabled={mutation.isLoading}>
-                        {mutation.isLoading ? 'Envoi...' : 'Créer'}
+                    <button type="submit" className="btn-add">
+                        {isEditMode ? "Mettre à jour" : "Enregistrer"}
                     </button>
+                    <button type="button" onClick={onCancel} className="page-btn">Annuler</button>
                 </div>
-
             </form>
         </div>
     );

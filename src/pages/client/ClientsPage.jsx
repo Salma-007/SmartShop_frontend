@@ -1,32 +1,42 @@
-import React from 'react';
-import AddClientForm from '../../components/client/AddClientForm';
+import React, { useState } from 'react';
 import ClientList from '../../components/client/ClientList';
+import AddClientForm from '../../components/client/AddClientForm';
 import './ClientsPage.css';
 
 const ClientsPage = () => {
+    const [isFormOpen, setIsFormOpen] = useState(false);
+    const [selectedClient, setSelectedClient] = useState(null);
+
+    const handleEdit = (client) => {
+        setSelectedClient(client);
+        setIsFormOpen(true);
+    };
+
+    const handleCloseForm = () => {
+        setIsFormOpen(false);
+        setSelectedClient(null);
+    };
+
     return (
         <div className="clients-page">
-
-            <div className="page-header">
+            <header className="page-header">
                 <div className="header-content">
-                    <h1>Gestion des Clients</h1>
-                    <p className="subtitle">
-                        Ajoutez et gérez facilement vos clients
-                    </p>
+                    <h1>Clients</h1>
+                    <p className="subtitle">Gestion de la base de données clients</p>
                 </div>
+                <button className="btn-add" onClick={() => setIsFormOpen(true)}>
+                    + Nouveau Client
+                </button>
+            </header>
 
-            </div>
+            {isFormOpen && (
+                <AddClientForm
+                    clientToEdit={selectedClient}
+                    onCancel={handleCloseForm}
+                />
+            )}
 
-            <section className="form-section">
-                <h2>Ajouter un Client</h2>
-                <AddClientForm />
-            </section>
-
-            <section className="list-section">
-                <h2>Liste des Clients existants</h2>
-                <ClientList />
-            </section>
-
+            <ClientList onEdit={handleEdit} />
         </div>
     );
 };
